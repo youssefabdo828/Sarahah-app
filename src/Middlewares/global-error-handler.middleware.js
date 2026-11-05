@@ -1,5 +1,11 @@
+import fs from "node:fs";
+
 const globalErrorHandler = (err, req, res, next) => {
     console.error(err);
+
+      if (req.file?.path) {
+    fs.unlink(req.file.path, () => {});
+  }
 
     let statusCode = err.statusCode || 500;
     let message = err.message || 'Internal Server Error';

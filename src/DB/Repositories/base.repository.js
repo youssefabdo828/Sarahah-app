@@ -55,4 +55,8 @@ findDocuments(filters = {}, projection = null, options = {}) {
     }
     return this.model.find(filters, projection, options);
 }
+
+deleteManyDocuments(filters) {
+  return this.model.deleteMany(filters);
+}
 }

@@ -3,6 +3,8 @@ import express from "express";
 import authcontroller from "./modules/Auth/auth.controller.js";
 import userController from "./modules/User/user.controller.js";
 import messageController from "./modules/Message/message.controller.js";
+import requestController from "./modules/Request/request.controller.js";
+import conversationController from "./modules/Conversation/conversation.controller.js";
 import  connectDB  from "./DB/connection.js";
 import globalErrorHandler from './Middlewares/global-error-handler.middleware.js';
 import cors from 'cors'
@@ -30,7 +32,8 @@ app.use('/uploads', express.static('uploads'))
 app.use("/auth", authcontroller);
 app.use("/user", userController);
 app.use("/messages", messageController);
-
+app.use("/requests", requestController);
+app.use("/conversations", conversationController);
 
 
 

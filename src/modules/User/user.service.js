@@ -3,6 +3,7 @@ import UserRepository from "../../DB/Repositories/user.repository.js";
 import { ConflictException, NotFoundException } from "../../Utils/Errors/exception.error.js";
 import { decrypt } from "../../Utils/Security/encryption.security.js";
 import { removeFile } from "../../Utils/Security/file.utils.js";
+import { deleteUserRelatedData } from "./user.cleanup.js";
 const userRepo = new UserRepository();
 
 export const getUserProfile = async (user) => {
@@ -56,6 +57,8 @@ export const deleteProfile = async (userId) => {
   if (!deletedUser) {
     throw new NotFoundException("User not found", { userId }, "USER_NOT_FOUND");
   }
+
+  await deleteUserRelatedData(userId);
 
   return deletedUser;
 };

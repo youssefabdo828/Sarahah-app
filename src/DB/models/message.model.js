@@ -7,8 +7,18 @@ receiverId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true
-}
-});
+},
+senderId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      select: false,
+    },
+    },
+  { timestamps: true
+    
+   }
+);
 
 
 
