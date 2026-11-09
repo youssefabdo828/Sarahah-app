@@ -2,4 +2,3 @@ node_modules
 *.env
 *.pem
 uploads
-READ_ME.txt
